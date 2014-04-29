@@ -1,4 +1,0 @@
-Rudish
-======
-
-a dummy app
