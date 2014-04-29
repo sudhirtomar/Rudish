@@ -1,4 +1,7 @@
 Rudish::Application.routes.draw do
+  resources :roles
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 # devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
@@ -50,6 +53,7 @@ Rudish::Application.routes.draw do
   # just remember to delete public/index.html.
    root :to => 'home#index'
 # devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+devise_for :users
 devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   # See how all your routes lay out with "rake routes"
 
