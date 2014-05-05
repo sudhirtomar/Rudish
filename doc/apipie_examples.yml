@@ -1,0 +1,12 @@
+--- !omap
+- apipies#index:
+  - !omap
+    - verb: :GET
+    - path: /apipie
+    - versions: []
+    - query: 
+    - request_data: 
+    - response_data: 
+    - code: 200
+    - show_in_doc: 0
+    - recorded: true
