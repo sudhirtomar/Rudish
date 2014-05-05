@@ -31,9 +31,11 @@ ActiveRecord::Schema.define(:version => 20140429114710) do
   create_table "photos", :force => true do |t|
     t.string   "name"
     t.integer  "album_id"
+    t.integer  "user_id"
     t.string   "image"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "profile_pic"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "relationships", :force => true do |t|
@@ -83,37 +85,6 @@ ActiveRecord::Schema.define(:version => 20140429114710) do
     t.datetime "updated_at",         :null => false
   end
 
-  create_table "user_profiles", :force => true do |t|
-    t.integer  "emp_id",            :default => 0, :null => false
-    t.integer  "user_id"
-    t.string   "job_profile"
-    t.string   "band_grad"
-    t.string   "designation"
-    t.string   "organization"
-    t.string   "bussiness_group"
-    t.string   "alternate_email"
-    t.string   "skype_id"
-    t.string   "facebook_profile"
-    t.string   "twitter_profile"
-    t.string   "linkedin_profile"
-    t.string   "seat_allocation"
-    t.string   "location"
-    t.string   "office_address"
-    t.string   "current_address"
-    t.string   "legal_address"
-    t.string   "about_me"
-    t.string   "marital_status"
-    t.integer  "voip_extension"
-    t.integer  "mobile_contact"
-    t.integer  "emergency_contact"
-    t.integer  "total_exp"
-    t.datetime "date_of_join"
-    t.datetime "birthday"
-    t.datetime "aniversary"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
-  end
-
   create_table "user_skill_sets", :force => true do |t|
     t.integer  "user_id"
     t.integer  "skill_set_id"
@@ -139,6 +110,32 @@ ActiveRecord::Schema.define(:version => 20140429114710) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "emp_id",                 :default => 0,  :null => false
+    t.integer  "user_id"
+    t.string   "job_profile"
+    t.string   "band_grad"
+    t.string   "designation"
+    t.string   "organization"
+    t.string   "bussiness_group"
+    t.string   "alternate_email"
+    t.string   "skype_id"
+    t.string   "facebook_profile"
+    t.string   "twitter_profile"
+    t.string   "linkedin_profile"
+    t.string   "seat_allocation"
+    t.string   "location"
+    t.string   "office_address"
+    t.string   "current_address"
+    t.string   "legal_address"
+    t.string   "about_me"
+    t.string   "marital_status"
+    t.integer  "voip_extension"
+    t.integer  "mobile_contact"
+    t.integer  "emergency_contact"
+    t.integer  "total_exp"
+    t.datetime "date_of_join"
+    t.datetime "birthday"
+    t.datetime "aniversary"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "provider"

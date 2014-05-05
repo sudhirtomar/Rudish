@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :provider, :uid
   # attr_accessible :title, :body
   #association with the user profile which user have only one
-  has_one :user_profile
+  has_many :photo, dependent: :destroy
   #User can have many skill sets
   has_many :user_skill_set
   has_many :skill_sets, through: :user_skill_set
@@ -27,7 +27,10 @@ class User < ActiveRecord::Base
   has_many :followers, through: :reverse_relationships, source: :follower
   has_many :albums
   has_and_belongs_to_many :roles
-  
+
+  #callback
+
+  # after_create :set_user_profile
 
 
   def self.find_for_facebook_oauth(auth)
@@ -41,7 +44,6 @@ class User < ActiveRecord::Base
     end
   end
   def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
-  	debugger
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     if user
       return user
@@ -66,7 +68,12 @@ class User < ActiveRecord::Base
         user = User.create(name:auth.info.first_name, provider:auth.provider, uid:auth.uid, email:auth.info.email, password:Devise.friendly_token[0,20])
       end
     end
-  end   
+  end  
+
+  def set_user_profile
+    puts "sudhir"
+debugger
+  end
 end
 
 
