@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
  # skip_before_filter :authenticate_user! # we do not need devise authentication here
- # before_filter :fetch_user, :except => [:index, :create]
+  before_filter :fetch_user, :except => [:index, :create]
   def fetch_user
     @user = User.find_by_id(params[:id])
   end
@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
   api :GET, "/users/:id", "Show an user"
   def show
+   
     respond_to do |format|
       format.json { render json: @user }
     end
@@ -50,6 +51,24 @@ class UsersController < ApplicationController
       else
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+api :POST, '/users/create_follower/follower_id', 'Follow User'
+  def create_follower
+    user = User.find(params[:id])
+    @followed = user.relationships.create(:followed_id => params[:follower_id])
+    respond_to do |format|
+      format.json { render json: @followed }
+    end
+  end
+
+api :DELETE, '/users/unfollow/follower_id', 'Unfollow User'
+  def unfollow
+    user = User.find(params[:id])
+    @followed = user.relationships.find(params[:follower_id]).destroy
+    respond_to do |format|
+      format.json { render json: @followed }
     end
   end
 end

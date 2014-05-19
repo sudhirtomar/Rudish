@@ -2,6 +2,8 @@ Rudish::Application.routes.draw do
   apipie
 
   resources :roles
+  resources :users
+
 
 
   # The priority is based upon order of creation:
