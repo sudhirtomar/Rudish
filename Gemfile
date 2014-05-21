@@ -13,8 +13,9 @@ gem 'omniauth-twitter'
 gem 'omniauth-linkedin' 
 gem 'carrierwave'
 gem 'cancan'
-
 gem 'apipie-rails'
+gem 'rabl'
+gem 'oj'
 
 # Gems used only for assets and not required
 # in production environments by default.
